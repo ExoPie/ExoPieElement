@@ -29,7 +29,7 @@ options.register ('useJECText',
 		  "useJECText")
 
 options.register ('useMiniAOD',
-		    True,
+		    'miniAOD',
 		    VarParsing.multiplicity.singleton,
 		    VarParsing.varType.bool,
 		    "useMiniAOD")
@@ -303,7 +303,7 @@ from JMEAnalysis.JetToolbox.jetToolbox_cff import jetToolbox
 
 ### CA15Puppi
 ### do we still need this? I guess no.
-jetToolbox( process, 'ca15', 'jetSequence', 'out', PUMethod='Puppi', miniAOD=options.useMiniAOD, runOnMC=options.runOnMC,
+jetToolbox( process, 'ca15', 'jetSequence', 'out', PUMethod='Puppi', dataTier=options.useMiniAOD, runOnMC=options.runOnMC,
 	    bTagDiscriminators=(bTagDiscriminators + ([] if NOTADDHBBTag else ['pfBoostedDoubleSecondaryVertexCA15BJetTags'])),
 	    JETCorrPayload='AK8PFPuppi',JETCorrLevels=jetCorrectionLevelsPuppi,
 	    subJETCorrPayload='AK4PFPuppi',subJETCorrLevels=jetCorrectionLevelsPuppi,
