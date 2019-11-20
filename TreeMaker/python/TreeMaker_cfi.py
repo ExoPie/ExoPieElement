@@ -35,7 +35,6 @@ tree = cms.EDAnalyzer(
     triggerLabel     = cms.InputTag("TriggerResults::HLT"),
     saveAllTrigPaths = cms.bool(False),
     filterLabel      = cms.InputTag("TriggerResults::RECO"),
-
     genPartLabel         = cms.InputTag("prunedGenParticles"),
     genParticles       = cms.InputTag("packedGenParticles"),
     genJetLabel          = cms.InputTag("slimmedGenJets"),
