@@ -20,14 +20,10 @@ tree = cms.EDAnalyzer(
     fillAK8PuppiJetInfo = cms.bool(False), ## Only if we need to recluster
     fillCA15PuppiJetInfo = cms.bool(False),
 
-    runOn2017 = cms.bool(False),
-    runOn2016 = cms.bool(False),
-
     pvSrc            = cms.InputTag('offlineSlimmedPrimaryVertices'),
 
     patMet           = cms.InputTag("slimmedMETs"),
-
-    pfType1Met       = cms.InputTag("slimmedMETs"),
+    pfType1Met       = cms.InputTag("slimmedMETsModifiedMET"),
     puppiMET         = cms.InputTag("slimmedMETsPuppi"),
 
     ## filter
@@ -86,7 +82,7 @@ tree = cms.EDAnalyzer(
     phoChargedIsolationToken       = cms.InputTag("photonIDValueMapProducer:phoChargedIsolation"),
     phoNeutralHadronIsolationToken = cms.InputTag("photonIDValueMapProducer:phoNeutralHadronIsolation"),
     phoPhotonIsolationToken        = cms.InputTag("photonIDValueMapProducer:phoPhotonIsolation"),
-
+    
     ####################################################################################################################################################################################
     ### This part still need some cleaning, this is very confusing, and not readable, but seems correct for the moment for 2016 and 2017 miniaod V2
     ####################################################################################################################################################################################
