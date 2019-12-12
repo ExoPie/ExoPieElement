@@ -17,7 +17,7 @@ DATAJEC='Summer16_23Sep2016'+PERIOD+'V3_DATA' ## this is not used at this moment
 
 config.section_("JobType")
 config.JobType.pluginName = 'Analysis'
-config.JobType.psetName = 'treeMaker_2018_cfg.py'
+config.JobType.psetName = 'treeMaker_16_17_18_cfg.py'
 config.JobType.pyCfgParams = ['runOnMC=True']
 
 config.JobType.inputFiles = ['../MetaData/data/DNN_models/breg_training_2017.pb',  ## this is for b-jet regression
