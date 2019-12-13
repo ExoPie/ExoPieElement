@@ -59,7 +59,7 @@ options.register ('runOn2016',
 		  "runOn2016")
 
 options.register ('runOn2018DGT',
-                  False,
+                  True,
                   VarParsing.multiplicity.singleton,
                   VarParsing.varType.bool,
                   "runOn2018DGT")
@@ -89,7 +89,7 @@ if options.runOn2018:
         process.GlobalTag.globaltag='102X_upgrade2018_realistic_v20'
     else:
 	if options.runOn2018DGT:
-		procesn.GlobalTag.globaltag='102X_dataRun2_Prompt_v15'
+		process.GlobalTag.globaltag='102X_dataRun2_Prompt_v15'
 	else:
         	process.GlobalTag.globaltag='102X_dataRun2_v12'
 elif options.runOn2017:
@@ -127,8 +127,10 @@ if options.runOn2018:
         if options.runOnMC:
                 testFile='/store/mc/RunIIAutumn18MiniAOD/QCD_Pt_600to800_TuneCP5_13TeV_pythia8/MINIAODSIM/102X_upgrade2018_realistic_v15-v1/80000/FC11B45B-C0E0-0F4B-8A04-E216B0A7C320.root'
         else:
-                testFile='/store/data/Run2018A/MET/MINIAOD/17Sep2018-v1/80000/CEDA5E93-263E-B64F-87C0-D060C35AA00A.root'
-
+		if options.runOn2018DGT:
+			testFile='/store/data/Run2018D/MET/MINIAOD/PromptReco-v2/000/320/500/00000/10DAB43A-EC95-E811-8987-FA163EEFC7B5.root'
+		else:
+			testFile='/store/data/Run2018A/MET/MINIAOD/17Sep2018-v1/80000/CEDA5E93-263E-B64F-87C0-D060C35AA00A.root'
 process.source = cms.Source("PoolSource",
                             secondaryFileNames = cms.untracked.vstring(),
 
