@@ -106,10 +106,12 @@ genInfoTree::Fill(const edm::Event& iEvent)
 
     // get PDF and scale weights
     if(saveLHEWeights_){
-      for (unsigned int i=0; i< evt->weights().size(); i++) {
-	float tempMCWeight = genEventInfoHandle->weight() > 0? 1: -1;
-	float sysLHEweight = tempMCWeight* evt->weights()[i].wgt/evt->originalXWGTUP();
-	pdfscaleSysWeights_.push_back( sysLHEweight );
+      for (unsigned int i=0; i< evt->weights().size(); i++)
+      {
+        float tempMCWeight = genEventInfoHandle->weight() > 0? 1: -1;
+        float sysLHEweight = tempMCWeight* evt->weights()[i].wgt/evt->originalXWGTUP();
+        pdfscaleSysWeights_.push_back( sysLHEweight );
+        pdfscaleSysWgtID_.push_back(evt->weights()[i].id);
       }
     }
 
@@ -188,7 +190,7 @@ genInfoTree::Fill(const edm::Event& iEvent)
     genParPy_.push_back(geni->py());
     genParPz_.push_back(geni->pz());
     genParE_.push_back(geni->energy());
-    
+
     genParQ_.push_back(geni->charge());
     genParId_.push_back(geni->pdgId());
     genParSt_.push_back(geni->status());
@@ -284,14 +286,14 @@ genInfoTree::Fill(const edm::Event& iEvent)
 	reco::GenJet gjet = *gjeti;
 	if(gjet.pt()<=15)continue;
 	if(fabs(gjet.eta())>3.0)continue;
-	
+
 	//TLorentzVector thisGJet_l4(gjet.px(),gjet.py(),gjet.pz(),gjet.energy());
 	//new( (*ak4GenJetP4_)[ak4nGenJet_]) TLorentzVector(thisGJet_l4);
 	ak4GenJetPx_.push_back(gjet.px());
 	ak4GenJetPy_.push_back(gjet.py());
 	ak4GenJetPz_.push_back(gjet.pz());
 	ak4GenJetE_.push_back(gjet.energy());
-	
+
 	ak4nGenJet_++;
     }
 
@@ -333,6 +335,9 @@ genInfoTree::SetBranches(){
   AddBranch(&genParSt_,"genParSt");
   AddBranch(&genMomParId_,"genMomParId");
   AddBranch(&mcWeight_, "mcWeight");
+  AddBranch(&originalLHEweight_, "originalLHEweight");
+  AddBranch(&pdfscaleSysWgtID_, "pdfscaleSysWgtID_");
+  AddBranch(&pdfscaleSysWeights_, "pdfscaleSysWeights");
 
   if (gen_extra){
     AddBranch(&genParIndex_,"genParIndex");
@@ -343,8 +348,7 @@ genInfoTree::SetBranches(){
     AddBranch(&ptHat_, "ptHat");
     AddBranch(&HT_, "HT");
     AddBranch(&pdf_, "pdf");
-    AddBranch(&originalLHEweight_, "originalLHEweight");
-    AddBranch(&pdfscaleSysWeights_, "pdfscaleSysWeights");
+
 
     AddBranch(&genNMo_,"genNMo");
     AddBranch(&genNDa_,"genNDa");
@@ -384,6 +388,7 @@ genInfoTree::Clear(){
   pdf_.clear();
   originalLHEweight_ = 1;
   pdfscaleSysWeights_.clear();
+  pdfscaleSysWgtID_.clear();
   nGenPar_ =0;
   //genParP4_->Clear();
   genParPx_.clear();
