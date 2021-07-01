@@ -16,10 +16,10 @@ setup_2017_2016_v03: * changes on top of setup_2017_2016_v02
 		     * updated the bjet regression
 
 setup_2017_2016_v04: * added l1 prefire weights for 2017 and 2016 era using the recipe from https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe
-		     * added chs met and track met for cross-checks. 
-		     * turned off the 2016 and 2017 switch to FASLE by default, this is necessary for proper functioning of the code. 
+		     * added chs met and track met for cross-checks.
+		     * turned off the 2016 and 2017 switch to FASLE by default, this is necessary for proper functioning of the code.
 
-setup_2017_2016_v05 * added the event counter histogrsm to monitor if the total data is processed or not. 
+setup_2017_2016_v05 * added the event counter histogrsm to monitor if the total data is processed or not.
 
 setup_2017_2016_v06 * no extra correction for jets
 		    * no pfMET process which we do not use
@@ -36,3 +36,5 @@ setup_2017_2016_v10 * added support for signal samples produced with randamized 
 setup_2017_2016_v11 * added JEC sources uncertainty for 2016 and 2017
 	            *
 setup_2017_2016_v12 * fixed writing mass branches per event
+
+setup_2017_2016_v13 * adding ele 115 trigger in 2017

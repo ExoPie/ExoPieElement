@@ -175,15 +175,15 @@ if options.runOn2017:
      872421955,872421567,872437184,872421951,
      872421694,872437056,872437057,872437313])
 
-    
+
     process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter("EcalBadCalibFilter",
       EcalRecHitSource = cms.InputTag("reducedEgamma:reducedEERecHits"),
       ecalMinEt        = cms.double(50.),
-      baddetEcal    = baddetEcallist, 
+      baddetEcal    = baddetEcallist,
       taggingMode = cms.bool(True),
       debug = cms.bool(False)
       )
-    
+
     from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
     runMetCorAndUncFromMiniAOD (
         process,
@@ -544,11 +544,14 @@ if options.runOn2017:
                                                               "HLT_Ele32_WPTight_Gsf_L1DoubleEG",
                                                               "HLT_Ele32_WPTight_Gsf",
                                                               "HLT_Ele35_WPTight_Gsf",
+                                                              "HLT_Ele115_CaloIdVT_GsfTrkIdT",
+                                                              "HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165",
                                                               "HLT_IsoMu24",
                                                               "HLT_IsoMu27",
                                                               "HLT_IsoTkMu27",
                                                               "HLT_IsoTkMu24",
-                                                              "HLT_Photon200" ),
+                                                              "HLT_Photon200",
+                                                              "HLT_Photon175"),
                                       isMC_ = cms.bool(options.runOnMC)
                                      )
 elif options.runOn2016:
