@@ -1,0 +1,2 @@
+testCrab_wgen_Vector_MonoZLL_NLO_Mphi-500_Mchi2-150_Mchi1-1_gSM-0p25_gDM-1p0_ctau1p0 /wgen_Vector_MonoZLL_NLO_Mphi-500_Mchi2-150_Mchi1-1_gSM-0p25_gDM-1p0_ctau1p0/fkhuzaim-RunIISummer20UL17_MINIAOD-87676c4ccd15f4d41337990d88f57b6b/USER 1
+

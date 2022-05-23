@@ -127,7 +127,9 @@ bRegressionProducer::bRegressionProducer( const ParameterSet &iConfig ) :
     jetToken_= consumes<View<pat::Jet> >(inputTagJets_);
 
     std::string cmssw_base = getenv("CMSSW_BASE");
-    std::string bRegressionWeightfileName_ = cmssw_base+"/src/ExoPieElement/MetaData/data/DNN_models/model-37.pb";//"breg_training_2017.pb";
+    // 37 for 2018 data and 51 for 2016-2017?
+    //    std::string bRegressionWeightfileName_ = cmssw_base+"/src/ExoPieElement/MetaData/data/DNN_models/model-37.pb";//"breg_training_2017.pb";
+    std::string bRegressionWeightfileName_ = cmssw_base+"/src/ExoPieElement/MetaData/data/DNN_models/model-51.pb";//"breg_training_2017.pb";
 
     //        NNgraph_ = *(new dnn::tf::Graph(bRegressionWeightfileName_.c_str())); //FIXME make this configurable, for variables for breg check this PR https://github.com/cms-analysis/flashgg/pull/968 REMEMBER TO ADD THE LAST CONE!
 
