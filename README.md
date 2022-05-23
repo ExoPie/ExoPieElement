@@ -49,7 +49,7 @@ cd test
 cmsRun treeMaker_16_17_cfg.py runOnMC=True runOn2017=True
 
 
-## for crab submission (NOT YET READY)
+## for crab submission 
 
 go the the directory: 
 
@@ -62,35 +62,21 @@ source setup.sh
 
 edit the crabConfig_2017_MC.py file, change following parameters as per your site of storage: 
 
-config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 30000
-
 config.Site.storageSite = "T2_TW_NCHC"                                                                                                                                                                      
-config.Data.outLFNDirBase = '/store/group/phys_exotica/bbMET/ExoPieElementTuples/%s' %(workname)
+
+Modify the input dataset text file: signal_private_monoZLL_2017.txt
 
 you can make a list of samples in a text and use it to submit multiple jobs using MultiCrab_2017MC.py
 
-you need to edit the .txt file name and run it using 
 
-python MultiCrab_2017MC.py
+for crab submit: python MultiCrab_2017MC.py --submit
 
- to check the status of all the jobs you just submitted you can add one function in the same file to do it. there is some example in 
+for crab status: python MultiCrab_2017MC.py --status --crabdir=crab_MC_2017miniaodV2_V1
 
+for crab status with summary of all the dataset: (ss refer to status summary) python MultiCrab_2017MC.py --status --crabdir=crab_MC_2017miniaodV2_V1 --ss
 
+for crab resubmit: python MultiCrab_2017MC.py --resubmit --crabdir=crab_MC_2017miniaodV2_V1
 
+for crab kill: python MultiCrab_2017MC.py --kill --crabdir=crab_MC_2017miniaodV2_V1
 
-for crab submit: 
-python MultiCrab_2017MC.py --submit 
-
-for crab status: 
-python MultiCrab_2017MC.py --status --crabdir=crab_MC_2017miniaodV2_V1
-
-for crab status with summary of all the dataset:  (ss refer to status summary)
-python MultiCrab_2017MC.py --status --crabdir=crab_MC_2017miniaodV2_V1 --ss 
-
-for crab resubmit: 
-python MultiCrab_2017MC.py --resubmit --crabdir=crab_MC_2017miniaodV2_V1
-
-for crab kill: 
-python MultiCrab_2017MC.py --kill --crabdir=crab_MC_2017miniaodV2_V1
 
