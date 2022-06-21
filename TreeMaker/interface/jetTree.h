@@ -193,6 +193,8 @@ class jetTree  : public baseTree{
   std::vector<int>                jetNTracks_;
   std::vector<std::vector<int>>   jetIndex_;
   std::vector<std::vector<int>>   jetTrackPID_;
+  std::vector<std::vector<int>>   jetTrackStatus_;
+  std::vector<std::vector<int>>   jetTrackHighPurity_;
   std::vector<std::vector<float>> jetTrackPt_;
   std::vector<std::vector<float>> jetTrackEta_;
   std::vector<std::vector<float>> jetTrackPhi_;

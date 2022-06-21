@@ -306,6 +306,8 @@ jetTree::Fill(const edm::Event& iEvent, edm::EventSetup const& iSetup){
 		unsigned int nTracks = 0;
 		std::vector<int>   jetIndex;
 		std::vector<int>   TrkPID;
+		std::vector<int>   TrkStatus;
+		std::vector<int>   TrkHighPurity;
 		std::vector<float> TrkPt;
 		std::vector<float> TrkEta;
 		std::vector<float> TrkPhi;
@@ -324,6 +326,8 @@ jetTree::Fill(const edm::Event& iEvent, edm::EventSetup const& iSetup){
 		    nTracks++;
 		    jetIndex.push_back(nJet_-1);
 		    TrkPID.push_back(pfcand.pdgId());
+		    TrkStatus.push_back(pfcand.status());
+		    TrkHighPurity.push_back(pfcand.trackHighPurity());
 		    TrkPt.push_back(pfcand.pt());
 		    TrkEta.push_back(pfcand.eta());
 		    TrkPhi.push_back(pfcand.phi());
@@ -339,6 +343,8 @@ jetTree::Fill(const edm::Event& iEvent, edm::EventSetup const& iSetup){
 		jetNTracks_.push_back(nTracks);
 		jetIndex_.push_back(jetIndex);
 		jetTrackPID_.push_back(TrkPID);
+		jetTrackStatus_.push_back(TrkStatus);
+		jetTrackHighPurity_.push_back(TrkHighPurity);
 		jetTrackPt_.push_back(TrkPt);
 		jetTrackEta_.push_back(TrkEta);
 		jetTrackPhi_.push_back(TrkPhi);
@@ -1093,6 +1099,8 @@ jetTree::SetBranches(){
 	AddBranch(&jetNTracks_,  "jetNTracks");
 	AddBranch(&jetIndex_,    "jetIndex");
 	AddBranch(&jetTrackPID_, "jetTrackPID");
+	AddBranch(&jetTrackStatus_, "jetTrackStatus");
+	AddBranch(&jetTrackHighPurity_, "jetTrackHighPurity");
 	AddBranch(&jetTrackPt_,  "jetTrackPt");
 	AddBranch(&jetTrackEta_, "jetTrackEta");
 	AddBranch(&jetTrackPhi_, "jetTrackPhi");
@@ -1161,18 +1169,6 @@ jetTree::SetBranches(){
                 AddBranch(&bRegNNCorr_,"bRegNNCorr");
                 AddBranch(&bRegNNResolution_,"bRegNNResolution");
 
-		// // displaced tracks
-		// AddBranch(&jetNTracks_,  "jetNTracks");
-		// AddBranch(&jetIndex_,    "jetIndex");
-		// AddBranch(&jetTrackPID_, "jetTrackPID");
-		// AddBranch(&jetTrackPt_,  "jetTrackPt");
-		// AddBranch(&jetTrackEta_, "jetTrackEta");
-		// AddBranch(&jetTrackPhi_, "jetTrackPhi");
-		// AddBranch(&jetTrackE_,   "jetTrackE");
-		// AddBranch(&jetTrackImpdz_,"jetTrackImpdz");
-		// AddBranch(&jetTrackImpdzError_, "jetTrackImpdzError"); 
-		// AddBranch(&jetTrackImpdxy_,"jetTrackImpdxy");
-		// AddBranch(&jetTrackImpdxyError_,"jetTrackImpdxyError");      
         }
 
         if(isFATJet_ || isAK8PuppiJet_ || isCA15PuppiJet_) {
@@ -1312,6 +1308,8 @@ jetTree::Clear(){
 	jetNTracks_.clear();
 	jetIndex_.clear();
 	jetTrackPID_.clear();
+	jetTrackStatus_.clear();
+	jetTrackHighPurity_.clear();
 	jetTrackPt_.clear();
 	jetTrackEta_.clear();
 	jetTrackPhi_.clear();
