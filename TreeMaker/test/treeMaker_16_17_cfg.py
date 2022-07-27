@@ -124,8 +124,7 @@ elif options.runOn2016:
 process.source = cms.Source("PoolSource",
                             secondaryFileNames = cms.untracked.vstring(),
                             #fileNames = cms.untracked.vstring("file:/tmp/khurana/temp.root"),
-							fileNames = cms.untracked.vstring(testFile),
-                            skipEvents = cms.untracked.uint32(100)
+							fileNames = cms.untracked.vstring(testFile)
                             )
 
 
